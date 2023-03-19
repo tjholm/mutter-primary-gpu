@@ -11,7 +11,7 @@ const FeatureMenuToggle = GObject.registerClass(
 class FeatureMenuToggle extends QuickSettings.QuickMenuToggle {
     _init() {
         super._init({
-            label: 'GPU',
+            title: 'GPU',
             iconName: 'video-display-symbolic',
             toggleMode: false,
         });
@@ -37,7 +37,7 @@ class FeatureMenuToggle extends QuickSettings.QuickMenuToggle {
             logError(e);
           }
 
-          if(gpu === primary) this.label = label;
+          if(gpu === primary) this.title = label;
 
           const item = new PopupMenu.PopupMenuItem(label);
           item.setOrnament(
@@ -45,7 +45,7 @@ class FeatureMenuToggle extends QuickSettings.QuickMenuToggle {
           );
           item.connect("activate", () => {
             setPrimaryGpu(gpu === primary ? null : gpu);
-            this.label = label;
+            this.title = label;
           });
           return item;
         });
